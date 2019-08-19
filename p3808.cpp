@@ -8,7 +8,7 @@
 #define DEBUG printf("PassedLine:%d\n", __LINE__)
 #define inf 1e9+7
 #define int long long
-const int maxn = 1e5+10;
+const int maxn = 1e5+10, maxch = ;
 inline int mmax(int a, int b){return a>b?a:b;}
 inline int mmin(int a, int b){return a<b?a:b;}
 inline int aabs(int a){return a>0?a:-a;}
