@@ -47,6 +47,7 @@ void get_fail(){
             }
             else tr[u].son[i] = tr[tr[u].fail].son[i];
         }
+        //prinf
     }
 }
 signed main(){
