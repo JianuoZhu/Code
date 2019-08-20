@@ -41,7 +41,11 @@ void get_fail(){
     while(!q.empty()){
         int u = q.front(); q.pop();
         for(int i=0; i<26; i++){
-            
+            if(tr[u].son[i]){
+                tr[tr[u].son[i]].fail = tr[tr[u].fail].son[i]; 
+                q.push(tr[u].son[i]);
+            }
+            else tr[u].son[i] = tr[tr[u].fail].son[i];
         }
     }
 }
