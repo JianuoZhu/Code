@@ -19,21 +19,28 @@ inline void read(int &x){
 }
 
 using namespace std;
-int gcd(int a, int b){
-    return(b == 0 ? a : gcd(b, a%b));
+struct edge{
+    int v, w, nxt;
+}e[maxn];
+int n, m, cnt, q[maxn], rt, tot, Minf, siz[maxn];
+void add(int u, int v, int w){
+    e[++cnt].v = v; e[cnt].w = w; 
+    e[cnt].nxt = h[u]; h[u] = cnt;
 }
-int n, a[maxn], b[maxn], m[maxn];
+void getrt(int x, int fa){
+    int f = 0, siz[x] = 0;
+    
+}
 signed main(){
-    read(n);
-    for(int i=1; i<=n; i++){
-        read(a[i]); read(b[i]);
+    read(n); read(m);
+    int u, v, w;
+    for(int i=1; i<=n-1; i++){
+        scanf("%d%d%d", u, v, w);
+        add(u, v, w); add(v, u, w);
     }
-    int x = a[1];
-    int M = b[1];
-    for(int i=2; i<=n; i++){
-        int k = 0;
-         
-         
-    }
+    for(int i=1; i<=m; i++) read(q[i]);
+    rt = 0; tot = n;
+    Minf = n+1;
+    getrt(1, 0);
     return 0;
 }

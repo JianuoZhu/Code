@@ -36,12 +36,14 @@ void add1(int x, int val){
     int mid = (tr1[x].l + tr1[x].r) / 2;
     if(val <= mid) add1(ls, val);
     else add1(rs, val);
+    tr1[x].sum = tr1[ls].sum + tr1[rs].sum;
 }
 void add2(int x, int val){
     if(tr2[x].l == tr2[x].r){tr2[x].sum++; return;}
     int mid = (tr2[x].l + tr2[x].r) / 2;
     if(val <= mid) add2(ls, val);
     else add2(rs, val);
+    tr2[x].sum = tr2[ls].sum + tr2[rs].sum;
 }
 int query1(int x, int val){
     if(tr1[x].l == tr1[x].r){return tr1[x].sum;}
