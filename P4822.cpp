@@ -56,11 +56,12 @@ signed main(){
         for(int i=h[u]; i; i=e[i].nxt){
             int v = e[i].v; w = e[i].w;
             for(int s=0; s<=k; s++){
-                add(n*s+u, n*(s+1)+v, w/2);
+                if(s>0)add(n*s+u, n*s+v, w);
+                if(s < k)add(n*s+u, n*(s+1)+v, w/2);
             }
         }
     }
-    for(int i=1; i<=k*(n+1); i++) dis[i] = inf;
+    for(int i=1; i<=n*(k+1); i++) dis[i] = inf;
     dij();
     int ans = inf;
     for(int i=0; i<=k; i++){
