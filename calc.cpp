@@ -30,9 +30,9 @@ void calc();
 void e_1();
 void Handle();
 signed main(){
-    printf("æ¬¢è¿ä½¿ç”¨æœ¬è®¡ç®—å™¨ï¼è¯·é€‰æ‹©ä½ è¦è¿›è¡Œçš„æ“ä½œï¼š\n");
-    printf("1.å››åˆ™è¿ç®—\n2.è§£çº¿æ€§æ–¹ç¨‹ç»„\n3.é€€å‡º\n");
-    printf("è¯·é€‰æ‹©(è¾“å…¥1~3çš„ä¸€ä¸ªæ•°å­—):");
+    printf("»¶Ó­Ê¹ÓÃ±¾¼ÆËãÆ÷£¡ÇëÑ¡ÔñÄãÒª½øĞĞµÄ²Ù×÷£º\n");
+    printf("1.ËÄÔòÔËËã\n2.½âÏßĞÔ·½³Ì×é\n3.ÍË³ö\n");
+    printf("ÇëÑ¡Ôñ(ÊäÈë1~3µÄÒ»¸öÊı×Ö):");
     Handle();
     return 0;
 }
@@ -42,17 +42,15 @@ void Handle(){
     if(opt == 1) calc();
     else if(opt == 2) e_1();
     else if(opt == 3) exit(0);
-    else printf("è¯·è¾“å…¥1~4çš„ä¸€ä¸ªæ•°å­—:"), Handle();
+    else printf("ÇëÊäÈë1~4µÄÒ»¸öÊı×Ö:"), Handle();
 }
 void calc(){
     getchar();
-    printf("è¯·è¾“å…¥ä¸€ä¸ªåªå«æœ‰+-*/å’Œæ‹¬å·çš„è¡¨è¾¾å¼ï¼Œå¹¶ä»¥#ç»“å°¾\n");
-    printf("ä¾‹ï¼š12*(23+34)/2-3#\n");
-    printf("è¯·è¾“å…¥ï¼š");
+    printf("ÇëÊäÈëÒ»¸öÖ»º¬ÓĞ+-*/ºÍÀ¨ºÅµÄ±í´ïÊ½£¬²¢ÒÔ#½áÎ²\n");
+    printf("Àı£º12*(23+34)/2-3#\n");
+    printf("ÇëÊäÈë£º");
     double ans = Calc();
-    printf("ç­”æ¡ˆä¸º:");
-    cout << ans;
-    printf("\næ„Ÿè°¢æ‚¨çš„ä½¿ç”¨!", ans);
+    printf("´ğ°¸Îª£º%lf\n¸ĞĞ»ÄúµÄÊ¹ÓÃ!", ans);
 }
 int prio(char c){
 	int pri;
@@ -73,7 +71,6 @@ double Calc(){
 	int flag = 0;
 	char c = getchar();
 	while (c != '#' || op.top() != '#'){
-		if(!num.empty())printf("c=%c,top=%c,ttop=%lf\n", c, op.top(), num.top()); 
 		if(isdigit(c)){
 			if (flag == 1){
 				double t = num.top(); num.pop();
@@ -88,19 +85,15 @@ double Calc(){
 		}
 		else{
 			flag = 0; int p1 = prio(op.top()), p2 = prio(c);
-			if((c == ')' && op.top() == '(') || (c == op.top() && c == '#') || (c == ')' && op.top() == '#')){
+			if((c == '(' && op.top() == ')') || (c == op.top() && c == '#')){
 				op.pop();
 				c = getchar();
             }
-            if(op.top() == '(' && c != ')'){
-            	op.push(c);
-				c = getchar();
-			}
-            else if(p1 < p2){
+            else if(p1 <= p2){
                 op.push(c);
 				c = getchar();
             }
-			else if(p1 >= p2){
+			else if(p1 > p2){
 				char t = op.top(); op.pop();
 				double a = num.top(); num.pop();
 				double b = num.top(); num.pop();
@@ -111,14 +104,14 @@ double Calc(){
 	return num.top();
 }
 void e_1(){
-    printf("è¯·é—®æ‚¨è¦è§£å‡ å…ƒçš„æ–¹ç¨‹ç»„å‘¢ï¼Ÿ\nè¯·è¾“å…¥ä¸€ä¸ªå°äº100çš„æ•´æ•°ï¼š");
+    printf("ÇëÎÊÄúÒª½â¼¸ÔªµÄ·½³Ì×éÄØ£¿\nÇëÊäÈëÒ»¸öĞ¡ÓÚ100µÄÕûÊı£º");
     int n;
     scanf("%d", &n);
-    printf("è¯·ä¾æ¬¡è¾“å…¥æ¯ä¸ªæ–¹ç¨‹çš„æœªçŸ¥æ•°çš„ç³»æ•°ä»¥åŠç­‰å¼å³è¾¹çš„å€¼\n");
-    printf("ä¾‹å¦‚ä¸‹é¢è¿™ä¸ªä¸‰å…ƒæ–¹ç¨‹ç»„ï¼š\n");
+    printf("ÇëÒÀ´ÎÊäÈëÃ¿¸ö·½³ÌµÄÎ´ÖªÊıµÄÏµÊıÒÔ¼°µÈÊ½ÓÒ±ßµÄÖµ\n");
+    printf("ÀıÈçÏÂÃæÕâ¸öÈıÔª·½³Ì×é£º\n");
     printf("x+y+z=3\n2x+y+z=4\nx+y=2\n");
-    printf("ä½ éœ€è¦è¾“å…¥:\n1 1 1 3\n2 1 1 4\n1 1 0 2\n");
-    printf("è¯·è¾“å…¥ï¼š");
+    printf("ÄãĞèÒªÊäÈë:\n1 1 1 3\n2 1 1 4\n1 1 0 2\n");
+    printf("ÇëÊäÈë£º");
     for (int i=0; i<n; i++){
         for (int j=0; j<n; j++)
             scanf("%lf", &eq[i][j]);
@@ -134,7 +127,7 @@ void e_1(){
             eq[ti][j]=t;
         }
         if (fabs(eq[i][i])<=EPS){
-            printf("æ— è§£\n");
+            printf("ÎŞ½â\n");
             exit(0);
         }
         for (int j=i+1; j<=n; j++) eq[i][j] /= eq[i][i];
@@ -142,7 +135,7 @@ void e_1(){
             if (i != j)
                 for (int k=i+1; k<=n; k++) eq[j][k] -= eq[j][i]*eq[i][k];
     }
-    printf("æ–¹ç¨‹çš„è§£ä¾æ¬¡ä¸ºï¼š");
+    printf("·½³ÌµÄ½âÒÀ´ÎÎª£º");
     for(int i=0; i<n; i++) cout << eq[i][n] << " ";
-    printf("\næ„Ÿè°¢æ‚¨çš„ä½¿ç”¨ï¼");
+    printf("\n¸ĞĞ»ÄúµÄÊ¹ÓÃ£¡");
 }
