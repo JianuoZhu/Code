@@ -17,10 +17,27 @@ inline void read(int &x){
      while(c >= '0' && c <= '9') x = x*10+c-'0', c = getchar();
      x *= w;
 }
-
+struct edge{
+    int v, nxt;
+}e[maxm];
 using namespace std;
-
+int n, h[maxn], cnt, siz[maxn], dep[maxn], f[maxn];
+void add(int u, int v){
+    e[++cnt].v = v; e[cnt].nxt = h[u]; h[u] = cnt;
+}
+void dfs1(int x, int fa){
+    dep[x] = dep[fa]+1; siz[x] = 1;
+    for(int i=h[x]; i; i=e[i].nxt){
+        
+    }
+}
 signed main(){
-    
+    read(n);
+    int u, v;
+    for(int i=1; i<=n; i++){
+        read(u); read(v); add(u, v);
+    }
+    dep[0] = -1;
+    dfs1(1, 0);
     return 0;
 }

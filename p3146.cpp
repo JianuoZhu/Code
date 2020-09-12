@@ -19,8 +19,22 @@ inline void read(int &x){
 }
 
 using namespace std;
-
+int n, v[maxn], f[1000][1000];
 signed main(){
-    
-    return 0;
+    read(n);
+    for(int i=1; i<=n; i++) read(v[i]);
+    for(int i=1; i<=n; i++) f[i][i] = v[i];
+    for(int len=2; len<=n; len++){
+        for(int s=1; s+len-1<=n; s++){
+            for(int k=s; k<s+len-1; k++){
+                if((f[s][k] && f[k+1][s+len-1]) && f[s][k]==f[k+1][s+len-1])
+                    f[s][s+len-1] = mmax(f[s][s+len-1], f[s][k]+1);
+            }
+        }
+    }
+    int ans = 0;
+    for(int i=1; i<=n; i++){
+        for(int j=i; j<=n; j++) ans = mmax(ans, f[i][j]);
+    }
+    printf("%lld", ans);
 }
